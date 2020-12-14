@@ -47,7 +47,7 @@ class PostController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    const post = await Post.FindOrFail(params.id)
+    const post = await Post.find(params.id)
   }
 
   /**
@@ -71,7 +71,7 @@ class PostController {
    * @param {Response} ctx.response
    */
   async update ({ params, request, response }) {
-    const post = await Post.findOrFail(params.id)
+    const post = await Post.find(params.id)
     const {comentario}=request.only(["comentario"])
     post.comentario = comentario
     await post.save()
@@ -87,7 +87,7 @@ class PostController {
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
-    const post = await Post.findOrFail(params.id)
+    const post = await Post.find(params.id)
     await post.delete()
     return post
   }
