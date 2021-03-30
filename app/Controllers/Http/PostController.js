@@ -32,7 +32,7 @@ class PostController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
-    const dados = request.only(["comentario"])
+    const dados = request.only(["comentario", "titulo", "conteudo"])
     const post = await Post.create(dados)
     return post
   }
