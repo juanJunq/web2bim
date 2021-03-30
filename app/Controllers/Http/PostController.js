@@ -72,8 +72,10 @@ class PostController {
    */
   async update ({ params, request, response }) {
     const post = await Post.findOrFail(params.id)
-    const {comentario}=request.only(["comentario"])
+    const {comentario, titulo, conteudo}=request.only(["comentario", "titulo", "conteudo"])
     post.comentario = comentario
+    post.titulo = titulo
+    post.conteudo = conteudo
     await post.save()
     return post
   }
